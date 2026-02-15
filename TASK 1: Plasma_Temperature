@@ -43,6 +43,6 @@ while count < 5:
 # # Printing the table using Regex
 # =============================================================================
 print("Plasma Temperature Classification")
-print("Temperature(K)\ Category")
+print("Temperature(K)   Category")
 for t, c in results: 
     print(f"{t:.2e}\t{c}")    #Using Regex to display data as a table in the command line.

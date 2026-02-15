@@ -1,0 +1,48 @@
+# No Libraries needed to import
+
+# =============================================================================
+# # Writing conditions fro the classification of temperatures.
+# =============================================================================
+def classify_plasma_temp(temp):
+    if temp < 1*10**4:
+        return "Cold plasma"
+    elif temp <= 1*10**6:
+        return "Warm plasma"
+    else:
+        return "Hot plasma"
+
+# =============================================================================
+# # Creating pre-defined veriables
+# =============================================================================
+results = []  
+temperatures = []
+count = 0
+
+# =============================================================================
+# # Taking Temperature value from user with invalid input handling
+# =============================================================================
+while count < 5:
+    input_values = input(f"Enter temperature {count+1} in Kelvin: ") #Input written in a function
+    
+    if input_values.replace('.', '', 1).isdigit():
+        t = float(input_values)
+        
+
+        if t < 0:
+            print("Temperature cannot be negative. Try again.")
+        else:
+            category = classify_plasma_temp(t)
+            results.append((t, category))
+            temperatures.append(t)
+            count += 1
+    else: # invailid data if value is not provided or otherthen numerical value and Loop will repeat itself
+        print("Invalid input. Please enter a numeric value.")
+        
+
+# =============================================================================
+# # Printing the table using Regex
+# =============================================================================
+print("Plasma Temperature Classification")
+print("Temperature(K)\ Category")
+for t, c in results: 
+    print(f"{t:.2e}\t{c}")    #Using Regex to display data as a table in the command line.

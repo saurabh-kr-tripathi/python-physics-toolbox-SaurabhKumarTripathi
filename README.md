@@ -2,17 +2,16 @@
 **First Code**
 TASK 1 : **Plasma Temperature Classifier**
 Purpose: To classify the Plasma temperatue in three cataguries i.e Cold, Warm and Hot.
-on the basis of given conditions 
-> This code will ask to user for 5 temperatures (code will check invailed data)
-> Classify it using conditional statements and loops
-> Conditional statements will check the given Conditions
-> Store it in the list of tuples
->   
-> Printing
+on the basis of given conditions.
+> This code will ask to user for 5 temperatures (code will check invailed data).
+> Classify it using conditional statements and loops.
+> Conditional statements will check the given Conditions.
+> Store it in the list of tuples.
+> Printing.
 
 **Second Code**
 TASK 3: **Simple Particle Energy Calculator**
-Purpose: use kinetic energy formula to calculate energy of the particle
+Purpose: use kinetic energy formula to calculate energy of the particle.
 > This code will take some of the data from the user and calucate the energy of the paricle and name and type of the particle in the return.
 > first this values will be used to calculate the Kinetic Energy in joule
 > then it will convert this energy in electron-volt(eV) using the given formula.

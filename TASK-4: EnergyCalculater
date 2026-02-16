@@ -1,0 +1,59 @@
+# =============================================================================
+# Importing Libraries
+# =============================================================================
+import re
+import matplotlib.pyplot as plt
+# =============================================================================
+# DATA GIVEN
+# =============================================================================
+raw_data = [
+    "lambda = 532 nm intensity 1.2 mW date 2025-04-10",
+    "Wavelength: 650nm, Power = 5W"
+]
+# =============================================================================
+# EXTRACTING VALUABLE INFORMATiON
+# =============================================================================
+cleaned_data = []     #List to store clean data
+wave = []
+power = []
+for entry in raw_data:
+    wavelength_match = re.search(r'(\d+\.?\d*)\s*nm', entry, re.IGNORECASE)
+    power_match = re.search(r'(\d+\.?\d*)\s*(mW|W)', entry, re.IGNORECASE)
+
+    if wavelength_match and power_match: #Filling all the matched values in the variables
+        wavelength = float(wavelength_match.group(1)) #taking first group i.e. Values
+        power_value = float(power_match.group(1)) #Taking value only
+        power_unit = power_match.group(2).lower() # Taking Unit
+        
+        if power_unit == 'w':
+            power_mW = power_value * 1000
+        else:
+            power_mW = power_value
+        cleaned_data.append({
+            'wavelength_nm': wavelength,
+            'power_mW': power_mW
+        })
+    wave.append(wavelength)
+    power.append(power_mW)
+        
+# =============================================================================
+# Print cleaned table
+# =============================================================================
+print("\nCleaned Optics Data:")
+print("-" * 30)
+
+# =============================================================================
+# Formatted String
+# =============================================================================
+for item in cleaned_data:
+    print(f"Wavelength = {item['wavelength_nm']} nm | "
+          f"Power = {item['power_mW']} mW") 
+print(wave,power)
+plt.figure()
+plt.bar(wave, power)
+plt.grid(True)
+plt.xlabel("Wavelength (nm)")
+plt.ylabel("Power (mW)")
+plt.title("Wavelength vs Power Bar Garph")
+
+plt.show()

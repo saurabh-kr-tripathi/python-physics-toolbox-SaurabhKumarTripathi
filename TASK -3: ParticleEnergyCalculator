@@ -1,0 +1,69 @@
+# =============================================================================
+# Making class and functions inside the class 
+# =============================================================================
+class Particle: # self value is given by the code in the loop while printing the output
+    def __init__(self, name, mass_kg, velocity_m_s, charge_coulomb=0.0):
+        self.name = name
+        self.mass_kg = float(mass_kg)
+        self.velocity_m_s = float(velocity_m_s)
+        self.charge_coulomb = float(charge_coulomb)
+
+    def kinetic_energy(self):
+        return float(0.5 * self.mass_kg * self.velocity_m_s ** 2)
+
+    def potential_energy(self, V):
+        return float(self.charge_coulomb * V)
+
+# =============================================================================
+# one electronVolt is equal to 1.6*10^(-19) joules
+# =============================================================================
+EV = 1.6e-19
+
+# =============================================================================
+# Creating Particles (can be used by code later)
+# =============================================================================
+electron = Particle(
+    name="Electron",
+    mass_kg=9.11e-31,
+    velocity_m_s=1.0e6,
+    charge_coulomb=-1.6e-19
+)
+
+proton = Particle(
+    name="Proton",
+    mass_kg=1.67e-27,
+    velocity_m_s=2.0e5,
+    charge_coulomb=1.6e-19
+)
+
+alpha_particle = Particle(
+    name="Alpha Particle",
+    mass_kg=6.64e-27,
+    velocity_m_s=1.0e5,
+    charge_coulomb=3.2e-19
+)
+
+# =============================================================================
+# Store particles in list
+# =============================================================================
+particles = [electron, proton, alpha_particle]
+
+# =============================================================================
+# Loop and print energies
+# =============================================================================
+for p in particles:
+    KE_joule = p.kinetic_energy()
+    KE_eV = KE_joule / EV
+
+    print(f"{p.name}:")
+    print(f"  Kinetic Energy = {KE_eV:.2e} eV")
+
+# =============================================================================
+# For Potential energy
+# =============================================================================
+    V = 1000  # volts
+    PE_joule = p.potential_energy(V)
+    PE_eV = PE_joule / EV
+
+    print(f"  Potential Energy at {V} V = {PE_eV} eV")
+    print()
